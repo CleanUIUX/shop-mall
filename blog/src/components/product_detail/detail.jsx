@@ -42,8 +42,29 @@ export const Detail = () => {
                             alt="plus" 
                         />
                     </div>
+                    <div className={styles.line}></div>
 
+                    <div className={styles.sum}>
+                        <div>
+                            <span className={styles.sum_price}>총 상품 금액</span>
+                        </div>
+
+                        <div className={styles.total_info}>
+                            <span className={styles.total}>
+                                총 수량
+                                <span className={styles.total_count}>1개</span>        
+                            </span>                        
+                            <span className={styles.total_price}>
+                                1000
+                                <span className={styles.total_unit}>원</span>
+                            </span>
+                        </div>
+                    </div>
                     
+                    <div className={styles.btn}>
+                        <button className={styles.btn_buy}>바로 구매</button>
+                        <button className={styles.btn_cart}>장바구니</button>
+                    </div>
                 </section>
             </main>
         </>
