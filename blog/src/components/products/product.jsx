@@ -1,10 +1,10 @@
 import {Link} from "react-router-dom";
 import styles from "./product.module.css";
 
-export const Product = ({ product }) => {
+export const Product = ({ product, converPrice }) => {
     return (
         <div className={styles.product}>
-            <Link to="#">
+            <Link to={`/product/${product.id}`}>
                 <div className={styles.product_image}>
                     <img src={product.image} alt="product" />
                 </div>
@@ -13,12 +13,12 @@ export const Product = ({ product }) => {
                 <span>{product.provider}</span>
             </div>
 
-            <div className={styles.prd_name}>
+            <div className={styles.product_name}>
                 <span>{product.name}</span>
             </div>
 
-            <div className={styles.prd_price}>
-                <span className={styles.price}>{product.price}</span>
+            <div className={styles.product_price}>
+                <span className={styles.price}>{converPrice(product.price)}</span>
                 <span className={styles.unit}>원</span>
             </div>
         </div>

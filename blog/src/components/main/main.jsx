@@ -4,7 +4,7 @@ import { EventBanner } from "../eventBanner/eventBanner"
 import axios from "axios"
 import { useEffect } from "react"
 
-export const Main = ({ products, setProducts }) => {
+export const Main = ({ products, setProducts, converPrice }) => {
 
     useEffect(() => {
         axios.get("/data/products.json").then((data) => {
@@ -22,7 +22,7 @@ export const Main = ({ products, setProducts }) => {
             </div>
             <main className={styles.flex_wrap}>
                 {products.map((product) => {
-                    return <Product key={`key-${product.id}`}  product = {product}/>
+                    return <Product key={`key-${product.id}`}  product = {product} converPrice ={converPrice}/>
                 })}
             </main>
         </>

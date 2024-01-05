@@ -1,20 +1,36 @@
+import axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import styles from "./detail.module.css";
 
 export const Detail = () => {
+    const { id } = useParams();
+    const [product, setProduct] = useState({});
+    const [count, setCount] = useState(1);
+
+    useEffect(() => {
+        axios.get("/data/products.json").then((data) => {
+            setProduct(data.data.products.find((product) => product.id === parseInt(id)));
+        })
+    }, [id])
+        
+    
+
     return (
         <>
             <main className={styles.main}>
                 <section className={styles.product}>
                     <div className={styles.product_img}>
-                        <img src="/images/image002.png" alt="product" />
+                        <img src={product.image} alt="product" />
                     </div>
                 </section>
                 <section className={styles.product}>
                     <div className={styles.product_info}>
-                        <p className={styles.seller_store}>아이돈케어</p>
-                        <p className={styles.product_name}>마로네</p>
+                        <p className={styles.seller_store}>{product.provider}</p>
+                        <p className={styles.product_name}>{product.name}</p>
                         <span className={styles.price}>
-                            1000
+                            {product.price}
                             <span className={styles.unit}>원</span>
                         </span>
                     </div>
